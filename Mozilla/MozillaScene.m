@@ -101,7 +101,8 @@ NSString *RandomIconName() {
 
     SKAction *createIconAction = [SKAction runBlock:^{
         SKSpriteNode *icon = [SKSpriteNode spriteNodeWithImageNamed: [[NSBundle bundleForClass: [self class]] pathForImageResource: RandomIconName()]];
-        icon.position = CGPointMake(random() % (u_int32_t) CGRectGetWidth(self.frame), 700);
+        CGFloat startingHeight = view.frame.size.height - (view.frame.size.height * 0.1);
+        icon.position = CGPointMake(random() % (u_int32_t) CGRectGetWidth(self.frame), startingHeight);
         icon.size = RandomSize();
         icon.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius: icon.size.width / 2];
         icon.physicsBody.dynamic = YES;
