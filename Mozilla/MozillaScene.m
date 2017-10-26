@@ -78,20 +78,26 @@ NSString *RandomIconName() {
         CGFloat offsetY = self.logo.frame.size.height * self.logo.anchorPoint.y;
 
         CGMutablePathRef path = CGPathCreateMutable();
-        CGPathMoveToPoint(path, NULL, 3 - offsetX, 103 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 479 - offsetX, 96 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 496 - offsetX, 146 - offsetY);
+        CGPathMoveToPoint(path, NULL, 3 - offsetX, 103 - offsetY); // top-left of m
+        CGPathAddLineToPoint(path, NULL, 150 - offsetX, 100 - offsetY);
+        CGPathAddLineToPoint(path, NULL, 179 - offsetX, 80 - offsetY); // Dip between m & o
+        CGPathAddLineToPoint(path, NULL, 212 - offsetX, 100 - offsetY);
+        CGPathAddLineToPoint(path, NULL, 268 - offsetX, 100 - offsetY);
+        CGPathAddLineToPoint(path, NULL, 292 - offsetX, 90 - offsetY); // Dip between o & z
+        CGPathAddLineToPoint(path, NULL, 303 - offsetX, 100 - offsetY);
+        CGPathAddLineToPoint(path, NULL, 479 - offsetX, 100 - offsetY); // Bottom of left-side of first /
+        CGPathAddLineToPoint(path, NULL, 496 - offsetX, 146 - offsetY); // Top of //
         CGPathAddLineToPoint(path, NULL, 577 - offsetX, 146 - offsetY);
         CGPathAddLineToPoint(path, NULL, 568 - offsetX, 95 - offsetY);
         CGPathAddLineToPoint(path, NULL, 631 - offsetX, 100 - offsetY);
         CGPathAddLineToPoint(path, NULL, 661 - offsetX, 87 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 664 - offsetX, 63 - offsetY);
-        CGPathAddLineToPoint(path, NULL, 673 - offsetX, 5 - offsetY);
+        CGPathAddLineToPoint(path, NULL, 664 - offsetX, 63 - offsetY); // top-right of a
+        CGPathAddLineToPoint(path, NULL, 673 - offsetX, 5 - offsetY); // bottom-left of a
         CGPathAddLineToPoint(path, NULL, 3 - offsetX, 1 - offsetY);
         CGPathCloseSubpath(path);
 
         self.logo.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromPath: path];
-        //logo.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath: path]; Gives odd results - maybe the path is incorrect?
+        //self.logo.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath: path]; //Gives odd results - maybe the path is incorrect?
         self.logo.physicsBody.dynamic = NO;
         self.logo.physicsBody.density = 10.0;
         self.logo.physicsBody.mass = 1000;
